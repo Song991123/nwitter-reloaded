@@ -1,5 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 
 const firebaseConfig = {
@@ -16,3 +18,9 @@ const app = initializeApp(firebaseConfig);
 
 // 인증 서비스
 export const auth = getAuth(app);
+
+// 스토리지 권한 얻기
+export const storage = getStorage(app);
+
+// DB 권한 얻기
+export const db = getFirestore(app);
