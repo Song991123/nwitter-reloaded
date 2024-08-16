@@ -115,7 +115,7 @@ export default function PostTweetForm(){
             // 만약 첨부된 파일이 있을 경우 =======
             if(file){
                 // 이미지 url 설정
-                const locationRef = ref(storage, `tweets/${user.uid}-${user.displayName}/${doc.id}`);
+                const locationRef = ref(storage, `tweets/${user.uid}/${doc.id}`);
                 // storage에 이미지 업로드
                 const result = await uploadBytes(locationRef, file);
                 // 업로드된 url 가져오기
