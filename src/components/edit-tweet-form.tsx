@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useRef, useState } from "react";
 import { toast } from 'react-toastify';
 import { doc, updateDoc } from "firebase/firestore";
-import { deleteObject, getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { auth, db, storage } from "../firebase";
 
 
@@ -148,9 +148,6 @@ export default function EditTweet({ photo, tweet, id, setEditState }: { photo?: 
             if (editFile) {
                 // 이미지 url 설정
                 const locationRef = ref(storage, `tweets/${user.uid}/${id}`);
-                if (photo) {
-                    await deleteObject(locationRef);
-                }
                 // storage에 이미지 업로드
                 const result = await uploadBytes(locationRef, editFile);
                 const url = await getDownloadURL(result.ref);
